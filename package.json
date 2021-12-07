@@ -1,0 +1,24 @@
+{
+  "name": "pdfml",
+  "version": "1.0.0",
+  "description": "A Markup Language for PDF files",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nutrition-power/pdfml.git"
+  },
+  "keywords": [
+    "pdf",
+    "markup",
+    "ejs"
+  ],
+  "author": "shimonbrandsdorfer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nutrition-power/pdfml/issues"
+  },
+  "homepage": "https://github.com/nutrition-power/pdfml#readme"
+}
