@@ -3,9 +3,11 @@
 </h1>
 
 <p align="center">
-  Write dynamic PDF files using A markdown language similar to HTML, Using the EJS rendering engine.
-  <br>
-  This project is built using <a href='http://pdfmake.org/#/'> pdfmake</d>
+  Write dynamic PDF files using a markdown language similar to HTML, Using the EJS rendering engine.
+<p>
+
+<p align="center">
+  This project is built using <a href='http://pdfmake.org/#/'>pdfmake</a>
 <p>
 
 
