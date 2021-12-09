@@ -43,19 +43,24 @@ const pdfml = require('pdfml');
 const pdfml = require('pdfml');
 
 ///in your express router
-router.get('/pdf', (res, res, next) => {
-  //you can query some data here
-  pdfml.render({
-    path : '', //path to your ejs file
-    data : {} ,// data for context in your ejs file,
-    fonts : {} //if you want to supply fonts
-  }, function (err, pdfDoc){
-    if(err) return next(err);
+router.get('/pdf', async (res, res, next) => {
+
+  try{
+    
+    //you can query some data here
+    let doc = await pdfml.render({
+      path : '', //path to your ejs file
+      data : {} ,// data for context in your ejs file,
+      fonts : {} //if you want to supply fonts
+    });
     res.setHeader("Content-type", "application/pdf");
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.attachment("PDF_FILE.pdf");
-    res.send(pdfDoc)
-  });
+    res.send(doc);
+
+  } catch (err) {
+     next(err);
+  }
 })
 ```
 
