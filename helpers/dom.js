@@ -1,10 +1,8 @@
 const _ = require("lodash");
 const custom = require("./aliases");
+const ELEMENS_ALIAS = require('./element_alias');
 
 
-const ELEMENS_ALIAS = {
-  div: "stack"
-};
 
 module.exports  = function processDOM(DOM, options = {defaultStyle : {}}) {
   let keyVals = processKeyVals(DOM);
