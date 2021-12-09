@@ -85,11 +85,11 @@ async function render(options, cb) {
         ...options,
         isFile: !!options.path
     });
-    return generatePDF(docDefinition, cb)
+    return generatePDF(docDefinition, {fonts: options.fonts}, cb)
 }
 
 
-async function generatePDF(docDefinition, cb) {
+async function generatePDF(docDefinition, {fonts}, cb) {
 
     const printer = new PdfPrinter(fonts);
     const doc = printer.createPdfKitDocument(docDefinition);
