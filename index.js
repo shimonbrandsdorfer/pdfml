@@ -8,15 +8,20 @@ const PdfPrinter = require("pdfmake");
 
 const fonts = {
     Avenir: {
-      normal: getFontPath("Avenir/AvenirLTStd-Light"),
-      bold: getFontPath("Avenir/AvenirLTStd-Roman")
+        normal: getFontPath("Avenir/AvenirLTStd-Light"),
+        bold: getFontPath("Avenir/AvenirLTStd-Roman")
     },
     Geo: {
-      normal: getFontPath("Geogrotesque/Geogtq-Rg"),
-      bold: getFontPath("Geogrotesque/Geogtq-Md"),
-      italics: getFontPath("Geogrotesque/Geogtq-Lg")
+        normal: getFontPath("Geogrotesque/Geogtq-Rg"),
+        bold: getFontPath("Geogrotesque/Geogtq-Md"),
+        italics: getFontPath("Geogrotesque/Geogtq-Lg")
+    },
+    Roboto : {
+        normal: getFontPath("Roboto/Roboto-Regular"),
+        bold: getFontPath("Roboto/Roboto-Bold"),
+        italics: getFontPath("Geogrotesque/Geogtq-Lg")
     }
-  };
+};
 
 
 /**
@@ -92,35 +97,48 @@ function renderString(text, data, options) {
  * 
  * @param {Object. |path, str} options 
  */
-async function render(options, cb) {
-    let docDefinition = await xmlToDom(options.path || options.str, options.data, {
-        ...options,
-        isFile: !!options.path
-    });
-    return generatePDF(docDefinition, {fonts: options.fonts}, cb)
+async function render(options) {
+    try {
+        let docDefinition = await xmlToDom(
+            options.path || options.str,
+            options.data,
+            {
+                ...options,
+                isText: !!options.str
+            });
+        return generatePDF(docDefinition, { fonts: options.fonts });
+    } catch (e) {
+        cb(e);
+    }
+
 }
 
 
-async function generatePDF(docDefinition, options, cb) {
+function generatePDF(docDefinition, options) {
+    return new Promise((resolve, reject) => {
+        const printer = new PdfPrinter({ ...fonts, ...options.fonts });
+        const doc = printer.createPdfKitDocument(docDefinition);
 
-    const printer = new PdfPrinter({...fonts, ...options.fonts});
-    const doc = printer.createPdfKitDocument(docDefinition);
+        let chunks = [];
 
-    let chunks = [];
+        doc.on("data", chunk => {
+            chunks.push(chunk);
+        });
 
-    doc.on("data", chunk => {
-        chunks.push(chunk);
+        doc.on("end", () => {
+            const result = Buffer.concat(chunks);
+            resolve(result);
+            return Promise.resolve();
+        });
+
+        doc.on('error', reject)
+
+        doc.end();
     });
 
-    doc.on("end", () => {
-        const result = Buffer.concat(chunks);
-        cb(result)
-        return Promise.resolve();
-    });
 
-    doc.end();
 }
 
 function getFontPath(fileName) {
     return path.join(__dirname, "fonts", `${fileName}.ttf`);
-  }
+}

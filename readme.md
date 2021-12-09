@@ -49,11 +49,12 @@ router.get('/pdf', (res, res, next) => {
     path : '', //path to your ejs file
     data : {} ,// data for context in your ejs file,
     fonts : {} //if you want to supply fonts
-  }, funcion (pdfDoc){
+  }, function (err, pdfDoc){
+    if(err) return next(err);
     res.setHeader("Content-type", "application/pdf");
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      res.attachment("PDF_FILE.pdf");
-      res.send(pdfDoc)
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.attachment("PDF_FILE.pdf");
+    res.send(pdfDoc)
   });
 })
 ```
@@ -72,3 +73,4 @@ Note - that the inner content is still rendered with ejs, so the variables need 
 Supported fonts are:
 - Avenir
 - Geo
+- Roboto

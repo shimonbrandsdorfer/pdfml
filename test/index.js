@@ -1,11 +1,11 @@
-const {xmlToDom} = require('../index');
+const { xmlToDom , render} = require('../index');
 const path = require('path');
 const { expect } = require('chai');
 
 describe('Render "simple.ejs" from xml to Document-Definition', () => {
     let dd;
     before(async () => {
-        dd = await xmlToDom(path.join(__dirname, '../samples/simple.ejs'), {text : 'TEXT'});
+        dd = await xmlToDom(path.join(__dirname, '../samples/simple.ejs'), { text: 'TEXT' });
     });
 
     it('Expect Document-Definition to be generated without error', () => {
@@ -29,8 +29,8 @@ describe('Render "simple.ejs" from xml to Document-Definition', () => {
 describe('Render "print-if.ejs" from xml to Document-Definition', () => {
     let ddFalse, ddTrue;
     before(async () => {
-        ddFalse = await xmlToDom(path.join(__dirname, '../samples/print-if.ejs'), {value : 'false', text : 'TEXT'});
-        ddTrue = await xmlToDom(path.join(__dirname, '../samples/print-if.ejs'), {value : 'true', text : 'TEXT'});
+        ddFalse = await xmlToDom(path.join(__dirname, '../samples/print-if.ejs'), { value: 'false', text: 'TEXT' });
+        ddTrue = await xmlToDom(path.join(__dirname, '../samples/print-if.ejs'), { value: 'true', text: 'TEXT' });
     });
 
     it('Expect Document-Definition to be generated without error', () => {
@@ -47,3 +47,15 @@ describe('Render "print-if.ejs" from xml to Document-Definition', () => {
         expect(ddTrue.content[0].text).to.equal('TEXT');
     });
 });
+
+describe('Genereate PDF with ejs file', () => {
+    
+    it('Generated properly', async () => {
+        let pdfDoc = await render({
+            path: path.join(__dirname, '../samples/simple.ejs'),
+            data: { text: 'TEXT' }
+        });
+
+        expect(pdfDoc).to.be.ok;
+    })
+})
