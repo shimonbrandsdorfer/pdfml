@@ -22,6 +22,7 @@
   - [Serve with express.js](#serve-with-express.js)
 - [Features](#features)
   - [Conditional Elements](#conditional-elements)
+- [Fonts](#Fonts)
 <!--te-->
 
 ## Installation
@@ -65,3 +66,9 @@ router.get('/pdf', (res, res, next) => {
 Use the attribute ```print-if``` and pass a boolean value to include this elements (and it's children or not).
 
 Note - that the inner content is still rendered with ejs, so the variables need to be defined.
+
+## Fonts
+
+Supported fonts are:
+- Avenir
+- Geo

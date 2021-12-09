@@ -6,6 +6,18 @@ const _ = require("lodash");
 const ProcessDom = require("./helpers/dom");
 const PdfPrinter = require("pdfmake");
 
+const fonts = {
+    Avenir: {
+      normal: getFontPath("Avenir/AvenirLTStd-Light"),
+      bold: getFontPath("Avenir/AvenirLTStd-Roman")
+    },
+    Geo: {
+      normal: getFontPath("Geogrotesque/Geogtq-Rg"),
+      bold: getFontPath("Geogrotesque/Geogtq-Md"),
+      italics: getFontPath("Geogrotesque/Geogtq-Lg")
+    }
+  };
+
 
 /**
  * 
@@ -89,9 +101,9 @@ async function render(options, cb) {
 }
 
 
-async function generatePDF(docDefinition, {fonts}, cb) {
+async function generatePDF(docDefinition, options, cb) {
 
-    const printer = new PdfPrinter(fonts);
+    const printer = new PdfPrinter({...fonts, ...options.fonts});
     const doc = printer.createPdfKitDocument(docDefinition);
 
     let chunks = [];
@@ -108,3 +120,7 @@ async function generatePDF(docDefinition, {fonts}, cb) {
 
     doc.end();
 }
+
+function getFontPath(fileName) {
+    return path.join(__dirname, "fonts", `${fileName}.ttf`);
+  }
