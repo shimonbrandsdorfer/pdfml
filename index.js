@@ -29,7 +29,7 @@ module.exports = {
  */
 async function xmlToDom(textPath, data, options = {ejs : {}}) {
     let xml;
-    if(options.isFile) xml = await renderFile(textPath, data, options.ejs);
+    if(!options.isText) xml = await renderFile(textPath, data, options.ejs);
     else xml = await renderString(textPath, data, options.ejs);
     const OPTIONS = {
         attrkey: "attrs",
