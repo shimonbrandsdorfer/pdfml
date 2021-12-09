@@ -20,5 +20,5 @@
 
 
 ```sh
-npm i pdfmly --save
+npm i pdfml --save
 ```
