@@ -17,11 +17,11 @@ describe('Render "simple.ejs" from xml to Document-Definition', () => {
     });
 
     it('The body text is "TEXT" (using the ejs context)', () => {
-        expect(dd.content[0].text).to.equal('TEXT')
+        expect(dd.content[0].text).to.equal('TEXT');
     });
 
     it('The body style is  "npStyle"', () => {
-        expect(dd.content[0].style).to.equal('npStyle')
+        expect(dd.content[0].style).to.equal('npStyle');
     });
 });
 
@@ -44,6 +44,6 @@ describe('Render "print-if.ejs" from xml to Document-Definition', () => {
     });
 
     it('The body text to be "TEXT: (when print-if value is true)', () => {
-        expect(ddTrue.content[0].text).to.equal('TEXT')
+        expect(ddTrue.content[0].text).to.equal('TEXT');
     });
 });
