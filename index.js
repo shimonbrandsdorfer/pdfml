@@ -27,9 +27,9 @@ module.exports = {
  * @param {isFile : Boolean, ejs: Object} options 
  * @returns 
  */
-async function xmlToDom(textPath, data, options = {ejs : {}}) {
+async function xmlToDom(textPath, data, options = { ejs: {} }) {
     let xml;
-    if(!options.isText) xml = await renderFile(textPath, data, options.ejs);
+    if (!options.isText) xml = await renderFile(textPath, data, options.ejs);
     else xml = await renderString(textPath, data, options.ejs);
     const OPTIONS = {
         attrkey: "attrs",
@@ -66,7 +66,7 @@ function renderFile(filePath, data, options) {
     });
 }
 
-function renderString(text, data, options){
+function renderString(text, data, options) {
     return new Promise((resolve, reject) => {
 
         ejs.render(text, data, options, (err, str) => {
@@ -80,38 +80,31 @@ function renderString(text, data, options){
  * 
  * @param {Object. |path, str} options 
  */
-async function render(options){
+async function render(options, cb) {
     let docDefinition = await xmlToDom(options.path || options.str, options.data, {
         ...options,
-        isFile : !!options.path
+        isFile: !!options.path
     });
-    return generatePDF(docDefinition)
+    return generatePDF(docDefinition, cb)
 }
 
 
-async function generatePDF(docDefinition) {
-    return new Promise((resolve, reject) => {
-        try {
-            //fonts
-            const printer = new PdfPrinter(fonts);
-            const doc = printer.createPdfKitDocument(docDefinition);
-    
-            let chunks = [];
-    
-            doc.on("data", chunk => {
-                chunks.push(chunk);
-            });
-    
-            doc.on("end", () => {
-                const result = Buffer.concat(chunks);
-                resolve(resolve)
-                return Promise.resolve();
-            });
-    
-            doc.end();
-        } catch (err) {
-            reject(err);
-        }
+async function generatePDF(docDefinition, cb) {
+
+    const printer = new PdfPrinter(fonts);
+    const doc = printer.createPdfKitDocument(docDefinition);
+
+    let chunks = [];
+
+    doc.on("data", chunk => {
+        chunks.push(chunk);
     });
-   
+
+    doc.on("end", () => {
+        const result = Buffer.concat(chunks);
+        cb(result)
+        return Promise.resolve();
+    });
+
+    doc.end();
 }

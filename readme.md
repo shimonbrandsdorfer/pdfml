@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href='https://github.com/nutrition-power/pdfml'>PDFML</a> - <em>PDF</em> Markdown Language
+  <a href='https://github.com/nutrition-power/pdfml'>PDFML</a> - <em>PDF</em>  Markdown Language
 </h1>
 
 <p align="center">
@@ -19,7 +19,7 @@
 - [Usage](#usage)
   - [Convert to JS Object]
   - [Get A Buffer]
-  - [Serve with express.js]
+  - [Serve with express.js](#serve-with-express.js)
 - [Features](#features)
   - [Conditional Elements](#conditional-elements)
 <!--te-->
@@ -33,10 +33,34 @@ npm i pdfml --save
 
 
 ## Usage
+```js
+const pdfml = require('pdfml');
+```
+
+### Serve with express.js
+```js
+const pdfml = require('pdfml');
+
+///in your express router
+router.get('/pdf', (res, res, next) => {
+  //you can query some data here
+  pdfml.render({
+    path : '', //path to your ejs file
+    data : {} // data for context in your ejs file
+  }, funcion(pdfDoc){
+    res.setHeader("Content-type", "application/pdf");
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.attachment("PDF_FILE.pdf");
+      res.send(pdfDoc)
+  });
+})
+```
 
 
 ## Features
 
 ### Conditional Elements
 
-Use the attribute ```print-if``` and pass a boolean value to include this elements (and it's children or not)
+Use the attribute ```print-if``` and pass a boolean value to include this elements (and it's children or not).
+
+Note - that the inner content is still rendered with ejs, so the variables need to be defined.
