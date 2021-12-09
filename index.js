@@ -1,7 +1,7 @@
 const ejs = require("ejs");
 const { parseString } = require("xml2js");
 const path = require("path");
-const _ = require("../lodash-extended");
+const _ = require("lodash");
 
 const ProcessDom = require("./helpers/dom");
 const PdfPrinter = require("pdfmake");
@@ -14,21 +14,23 @@ const PdfPrinter = require("pdfmake");
  * @param {} options 
  * @returns {Promise}
  */
-module.export = {
-    generatePDF
+module.exports = {
+    generatePDF,
+    render,
+    xmlToDom
 }
 
 /**
  * 
- * @param {String} text 
+ * @param {String} textPath | xml as string or path to file 
  * @param {*} data 
  * @param {isFile : Boolean, ejs: Object} options 
  * @returns 
  */
-async function xmlToDom(text, data, options = {ejs = {}}) {
+async function xmlToDom(textPath, data, options = {ejs : {}}) {
     let xml;
-    if(options.isFile) xml = await renderFile(text, data, options.ejs);
-    else xml = await renderString(text, data, options.ejs);
+    if(options.isFile) xml = await renderFile(textPath, data, options.ejs);
+    else xml = await renderString(textPath, data, options.ejs);
     const OPTIONS = {
         attrkey: "attrs",
         charkey: "_",

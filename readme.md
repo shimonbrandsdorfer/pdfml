@@ -5,6 +5,7 @@
 <p align="center">
   Write dynamic PDF files using A markdown language similar to HTML, Using the EJS rendering engine.
   <br>
+  This project is built using <a href='http://pdfmake.org/#/'> pdfmake</d>
 <p>
 
 

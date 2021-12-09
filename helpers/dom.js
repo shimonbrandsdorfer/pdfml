@@ -1,16 +1,12 @@
 const _ = require("lodash");
 const custom = require("./aliases");
 
-const DEF_STYLE = {
-  font: "Avenir"
-};
 
 const ELEMENS_ALIAS = {
   div: "stack"
 };
 
-module.exports  = function processDOM(DOM) {
-  let defaultStyle = DEF_STYLE;
+module.exports  = function processDOM(DOM, options = {defaultStyle : {}}) {
   let keyVals = processKeyVals(DOM);
   let content = processBody(DOM, keyVals);
   let styles = processStyles(DOM, keyVals);
@@ -19,7 +15,7 @@ module.exports  = function processDOM(DOM) {
 
   let dd = {
     content,
-    defaultStyle,
+    defaultStyle : options.defaultStyle,
     styles,
     header,
     footer
