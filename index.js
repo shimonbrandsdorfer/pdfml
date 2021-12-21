@@ -16,7 +16,7 @@ const fonts = {
         bold: getFontPath("Geogrotesque/Geogtq-Md"),
         italics: getFontPath("Geogrotesque/Geogtq-Lg")
     },
-    Roboto : {
+    Roboto: {
         normal: getFontPath("Roboto/Roboto-Regular"),
         bold: getFontPath("Roboto/Roboto-Bold"),
         italics: getFontPath("Geogrotesque/Geogtq-Lg")
@@ -98,19 +98,14 @@ function renderString(text, data, options) {
  * @param {Object. |path, str} options 
  */
 async function render(options) {
-    try {
-        let docDefinition = await xmlToDom(
-            options.path || options.str,
-            options.data,
-            {
-                ...options,
-                isText: !!options.str
-            });
-        return generatePDF(docDefinition, { fonts: options.fonts });
-    } catch (e) {
-        cb(e);
-    }
-
+    let docDefinition = await xmlToDom(
+        options.path || options.str,
+        options.data,
+        {
+            ...options,
+            isText: !!options.str
+        });
+    return generatePDF(docDefinition, { fonts: options.fonts });
 }
 
 
