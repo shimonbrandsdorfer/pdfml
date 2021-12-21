@@ -17,9 +17,12 @@
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Usage](#usage)
+  - [EJS file](#ejs-file)
   - [Convert to JS Object]
   - [Get A Buffer]
   - [Serve with express.js](#serve-with-express.js)
+- [Elements](#elements)
+  -[PDFML](#pdfml)
 - [Features](#features)
   - [Conditional Elements](#conditional-elements)
 - [Fonts](#Fonts)
@@ -37,6 +40,29 @@ npm i pdfml --save
 ```js
 const pdfml = require('pdfml');
 ```
+
+### EJS file
+ Create an ejs file, for example:
+ ```
+ <pdfml page-margins="[ 25, 140, 24, 30 ]">
+
+    <head>
+        <styles>
+            <npStyle font-size="50" bold="true"></npStyle>
+            <hdStyle font-size="14" color="red"></hdStyle>
+            <hpStyle font-size="14" color="red"></hpStyle>
+        </styles>
+        <values page-size="LETTER"></values>
+        <header>Header</header>
+        <footer>
+        </footer>
+    </head>
+
+    <body>
+        <text style="npStyle"><%= text %></text>
+    </body>
+</pdfml>
+ ```
 
 ### Serve with express.js
 ```js
@@ -64,6 +90,12 @@ router.get('/pdf', async (res, res, next) => {
 })
 ```
 
+
+## Elements
+
+### PDFML
+
+PDFML is the root element for the PDF document, and there is where you define all <a href="https://pdfmake.github.io/docs/0.1/document-definition-object/page/">document-level</a> Settings.
 
 ## Features
 
