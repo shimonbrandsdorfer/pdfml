@@ -120,7 +120,8 @@ For tables use the the following elements (body, row, cell):
         </row>
       <%  }) %>
   </body>
-</table>```
+</table>
+```
 
 ## Features
 
