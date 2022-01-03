@@ -1,0 +1,31 @@
+<pdfml page-margins="[ 25, 140, 24, 30 ]">
+
+    <head>
+        <styles>
+            <npStyle font-size="50" bold="true"></npStyle>
+            <hdStyle font-size="14" color="red"></hdStyle>
+            <hpStyle font-size="14" color="red"></hpStyle>
+        </styles>
+        <values page-size="LETTER"></values>
+        <header>Header</header>
+        <footer>
+        </footer>
+    </head>
+
+    <body>
+        <table header-rows="1" widths="[95,95,95,95,95,95,95]" heights="[12,50,50,50,50,50,50]" dont-break-rows="true">
+            <body>
+                <% rows.forEach((row, rIdx) => { %>          
+                  <row>
+                    <% row.forEach((clm, cIdx) => { %>
+                        <cell fill-color="<%= rIdx ? '' : '#e5e5e5' %>">
+                            <text font-size="8" bold="true"> <%= clm %> </text>
+                        </cell> 
+                    <% }) %>
+                </row>
+              <%  }) %>
+          </body>
+        </table>
+    </body>
+</pdfml>
+

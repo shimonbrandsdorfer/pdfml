@@ -97,6 +97,31 @@ router.get('/pdf', async (res, res, next) => {
 
 PDFML is the root element for the PDF document, and there is where you define all <a href="https://pdfmake.github.io/docs/0.1/document-definition-object/page/">document-level</a> Settings.
 
+
+### text
+
+```<text>This is plain text</text>```
+
+
+### table
+
+For tables use the the following elements (body, row, cell):
+
+```xml
+<table header-rows="1" widths="[95,95,95,95,95,95,95]" heights="[12,50,50,50,50,50,50]" dont-break-rows="true">
+    <body>
+        <% rows.forEach((row, rIdx) => { %>          
+          <row>
+            <% row.forEach((clm, cIdx) => { %>
+                <cell fill-color="<%= rIdx ? '' : '#e5e5e5' %>">
+                    <text font-size="8" bold="true"> <%= clm %> </text>
+                </cell> 
+            <% }) %>
+        </row>
+      <%  }) %>
+  </body>
+</table>```
+
 ## Features
 
 ### Conditional Elements

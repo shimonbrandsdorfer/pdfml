@@ -48,6 +48,18 @@ describe('Render "print-if.ejs" from xml to Document-Definition', () => {
     });
 });
 
+
+describe('Render "table.ejs" from xml to Document-Definition', () => {
+    let dd;
+    before(async () => {
+        dd = await xmlToDom(path.join(__dirname, '../samples/table.ejs'), { rows : [['A', 'B'], ['C', 'D']] });
+    });
+
+    it('Expect Document-Definition to be generated without error', () => {
+        expect(dd).to.be.ok;
+    });
+});
+
 describe('Genereate PDF with ejs file', () => {
     
     it('Generated properly', async () => {
