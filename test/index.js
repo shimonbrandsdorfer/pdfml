@@ -60,6 +60,17 @@ describe('Render "table.ejs" from xml to Document-Definition', () => {
     });
 });
 
+describe('Render "br.ejs" from xml to Document-Definition', () => {
+    let dd;
+    before(async () => {
+        dd = await xmlToDom(path.join(__dirname, '../samples/br.ejs'), {  });
+    });
+
+    it('Expect Document-Definition to be generated without error', () => {
+        expect(dd).to.be.ok;
+    });
+});
+
 describe('Genereate PDF with ejs file', () => {
     
     it('Generated properly', async () => {

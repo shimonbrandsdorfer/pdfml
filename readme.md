@@ -22,7 +22,10 @@
   - [Get A Buffer]
   - [Serve with express.js](#serve-with-express.js)
 - [Elements](#elements)
-  -[PDFML](#pdfml)
+  - [PDFML](#pdfml)
+  - [TEXT](#TEXT)
+  - [Table](#table)
+  - [Br](#br)
 - [Features](#features)
   - [Conditional Elements](#conditional-elements)
 - [Fonts](#Fonts)
@@ -121,6 +124,13 @@ For tables use the the following elements (body, row, cell):
       <%  }) %>
   </body>
 </table>
+```
+
+
+## Br
+Just to break a line (Note, you cannot use it as a self-closing tag)
+```xml
+<br></br>
 ```
 
 ## Features
