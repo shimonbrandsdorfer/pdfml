@@ -158,7 +158,7 @@ function processText({text, preserveNL}){
   if(preserveNL) return text;
   if(!_.isString(text)) return text;
   //for now we always remove new lines
-  return text && text.split('\n').map(x => x.trim()).join(' ');
+  return text && text.split('\n').join(' ');
 }
 
 function handleVars(elem, keyVals) {
