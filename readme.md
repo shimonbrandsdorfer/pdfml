@@ -18,7 +18,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
   - [EJS file](#ejs-file)
-  - [Convert to JS Object]
+  - [Convert to DocDefinition Object](#convert-to-docdefinition-object)
   - [Get A Buffer]
   - [Serve with express.js](#serve-with-express.js)
 - [Elements](#elements)
@@ -45,7 +45,7 @@ const pdfml = require('pdfml');
 pdfml.render({
   path : PATH_TO_FILE_NAME
   data : RENDER_DATA
-})
+});
 ```
 
 ### EJS file
@@ -70,6 +70,14 @@ pdfml.render({
     </body>
 </pdfml>
  ```
+
+
+### Convert to DocDefinition Object
+```js
+const pdfml = require('pdfml');
+pdfml.getDD(STRING_OR_PATH_TO_FILE, RENDER_DATA, OPTIONS);
+```
+
 
 ### Serve with express.js
 ```js

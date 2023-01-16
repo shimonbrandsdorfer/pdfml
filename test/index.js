@@ -1,11 +1,11 @@
-const { xmlToDom , render} = require('../index');
+const { getDD , render} = require('../index');
 const path = require('path');
 const { expect } = require('chai');
 
 describe('Render "simple.ejs" from xml to Document-Definition', () => {
     let dd;
     before(async () => {
-        dd = await xmlToDom(path.join(__dirname, '../samples/simple.ejs'), { text: 'TEXT' });
+        dd = await getDD(path.join(__dirname, '../samples/simple.ejs'), { text: 'TEXT' });
     });
 
     it('Expect Document-Definition to be generated without error', () => {
@@ -29,8 +29,8 @@ describe('Render "simple.ejs" from xml to Document-Definition', () => {
 describe('Render "print-if.ejs" from xml to Document-Definition', () => {
     let ddFalse, ddTrue;
     before(async () => {
-        ddFalse = await xmlToDom(path.join(__dirname, '../samples/print-if.ejs'), { value: 'false', text: 'TEXT' });
-        ddTrue = await xmlToDom(path.join(__dirname, '../samples/print-if.ejs'), { value: 'true', text: 'TEXT' });
+        ddFalse = await getDD(path.join(__dirname, '../samples/print-if.ejs'), { value: 'false', text: 'TEXT' });
+        ddTrue = await getDD(path.join(__dirname, '../samples/print-if.ejs'), { value: 'true', text: 'TEXT' });
     });
 
     it('Expect Document-Definition to be generated without error', () => {
@@ -52,7 +52,7 @@ describe('Render "print-if.ejs" from xml to Document-Definition', () => {
 describe('Render "table.ejs" from xml to Document-Definition', () => {
     let dd;
     before(async () => {
-        dd = await xmlToDom(path.join(__dirname, '../samples/table.ejs'), { rows : [['A', 'B'], ['C', 'D']] });
+        dd = await getDD(path.join(__dirname, '../samples/table.ejs'), { rows : [['A', 'B'], ['C', 'D']] });
     });
 
     it('Expect Document-Definition to be generated without error', () => {
@@ -63,7 +63,7 @@ describe('Render "table.ejs" from xml to Document-Definition', () => {
 describe('Render "br.ejs" from xml to Document-Definition', () => {
     let dd;
     before(async () => {
-        dd = await xmlToDom(path.join(__dirname, '../samples/br.ejs'), {  });
+        dd = await getDD(path.join(__dirname, '../samples/br.ejs'), {  });
     });
 
     it('Expect Document-Definition to be generated without error', () => {

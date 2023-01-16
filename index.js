@@ -34,7 +34,7 @@ const fonts = {
 module.exports = {
     generatePDF,
     render,
-    xmlToDom
+    getDD
 }
 
 /**
@@ -42,9 +42,9 @@ module.exports = {
  * @param {String} textPath | xml as string or path to file 
  * @param {*} data 
  * @param {isFile : Boolean, ejs: Object} options 
- * @returns 
+ * @returns {docDefinition}
  */
-async function xmlToDom(textPath, data, options = { ejs: {} }) {
+async function getDD(textPath, data, options = { ejs: {} }) {
     let xml;
     if (!options.isText) xml = await renderFile(textPath, data, options.ejs);
     else xml = await renderString(textPath, data, options.ejs);
@@ -98,7 +98,7 @@ function renderString(text, data, options) {
  * @param {Object. |path, str} options 
  */
 async function render(options) {
-    let docDefinition = await xmlToDom(
+    let docDefinition = await getDD(
         options.path || options.str,
         options.data,
         {
