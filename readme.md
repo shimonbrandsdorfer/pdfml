@@ -51,7 +51,7 @@ pdfml.render({
 ### EJS file
  Create an ejs file, for example:
  ```
- <pdfml page-margins="[ 25, 140, 24, 30 ]">
+ <pdfml page-margins="[ 25, 140, 24, 30 ]" page-size="LETTER">
 
     <head>
         <styles>
@@ -59,7 +59,6 @@ pdfml.render({
             <hdStyle font-size="14" color="red"></hdStyle>
             <hpStyle font-size="14" color="red"></hpStyle>
         </styles>
-        <values page-size="LETTER"></values>
         <header>Header</header>
         <footer>
         </footer>
@@ -117,6 +116,16 @@ router.get('/pdf', async (res, res, next) => {
 ### PDFML
 
 PDFML is the root element for the PDF document, and there is where you define all <a href="https://pdfmake.github.io/docs/0.1/document-definition-object/page/">document-level</a> Settings.
+
+
+Using the attributes of the ```<pdfml>``` element ([see example](#pdfml-attributes-example)) you can define document level settings, such as page size, orientation, margins, etc.
+```
+
+#### PDFML Attributes Example
+```xml
+<pdfml page-size="LETTER" page-orientation="landscape" page-margins="[ 25, 140, 24, 30 ]">
+</pdfml>
+```
 
 
 ### text

@@ -1,4 +1,4 @@
-<pdfml page-margins="[ 25, 140, 24, 30 ]">
+<pdfml page-margins="[ 25, 140, 24, 30 ]" page-size="LETTER" page-orientation="landscape">
 
     <head>
         <styles>
@@ -6,13 +6,11 @@
             <hdStyle font-size="14" color="red"></hdStyle>
             <hpStyle font-size="14" color="red"></hpStyle>
         </styles>
-        <values page-size="LETTER"></values>
         <header>Header</header>
         <footer>
         </footer>
     </head>
 
     <body>
-        <text style="npStyle"><%= text %></text>
     </body>
 </pdfml>

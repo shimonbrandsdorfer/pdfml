@@ -2,10 +2,10 @@ const { getDD , render} = require('../index');
 const path = require('path');
 const { expect } = require('chai');
 
-describe('Render "simple.ejs" from xml to Document-Definition', () => {
+describe('Render "simple.pdfml" from xml to Document-Definition', () => {
     let dd;
     before(async () => {
-        dd = await getDD(path.join(__dirname, '../samples/simple.ejs'), { text: 'TEXT' });
+        dd = await getDD(path.join(__dirname, '../samples/simple.pdfml'), { text: 'TEXT' });
     });
 
     it('Expect Document-Definition to be generated without error', () => {
@@ -15,7 +15,7 @@ describe('Render "simple.ejs" from xml to Document-Definition', () => {
     it('Returns a JS Object', () => {
         expect(dd).to.be.an('object');
     });
-
+    
     it('The body text is "TEXT" (using the ejs context)', () => {
         expect(dd.content[0].text).to.equal('TEXT');
     });
@@ -25,12 +25,35 @@ describe('Render "simple.ejs" from xml to Document-Definition', () => {
     });
 });
 
+describe('Render "pdfml-attrs.pdfml" from xml to Document-Definition', () => {
+    let dd;
+    before(async () => {
+        dd = await getDD(path.join(__dirname, '../samples/pdfml-attrs.pdfml'), { text: 'TEXT' });
+    });
 
-describe('Render "print-if.ejs" from xml to Document-Definition', () => {
+    it('Expect Document-Definition to be generated without error', () => {
+        expect(dd).to.be.ok;
+    });
+
+    it('The page size is "LETTER"', () => {
+        expect(dd.pageSize).to.equal('LETTER');
+    });
+
+    it('The page orientation is "landscape"', () => {
+        expect(dd.pageOrientation).to.equal('landscape');
+    });
+
+    it('The page margins is = "[ 25, 140, 24, 30 ]"', () => {
+        expect(dd.pageMargins).to.deep.equal([ 25, 140, 24, 30 ]);
+    });
+});
+
+
+describe('Render "print-if.pdfml" from xml to Document-Definition', () => {
     let ddFalse, ddTrue;
     before(async () => {
-        ddFalse = await getDD(path.join(__dirname, '../samples/print-if.ejs'), { value: 'false', text: 'TEXT' });
-        ddTrue = await getDD(path.join(__dirname, '../samples/print-if.ejs'), { value: 'true', text: 'TEXT' });
+        ddFalse = await getDD(path.join(__dirname, '../samples/print-if.pdfml'), { value: 'false', text: 'TEXT' });
+        ddTrue = await getDD(path.join(__dirname, '../samples/print-if.pdfml'), { value: 'true', text: 'TEXT' });
     });
 
     it('Expect Document-Definition to be generated without error', () => {
@@ -49,10 +72,10 @@ describe('Render "print-if.ejs" from xml to Document-Definition', () => {
 });
 
 
-describe('Render "table.ejs" from xml to Document-Definition', () => {
+describe('Render "table.pdfml" from xml to Document-Definition', () => {
     let dd;
     before(async () => {
-        dd = await getDD(path.join(__dirname, '../samples/table.ejs'), { rows : [['A', 'B'], ['C', 'D']] });
+        dd = await getDD(path.join(__dirname, '../samples/table.pdfml'), { rows : [['A', 'B'], ['C', 'D']] });
     });
 
     it('Expect Document-Definition to be generated without error', () => {
@@ -60,10 +83,10 @@ describe('Render "table.ejs" from xml to Document-Definition', () => {
     });
 });
 
-describe('Render "br.ejs" from xml to Document-Definition', () => {
+describe('Render "br.pdfml" from xml to Document-Definition', () => {
     let dd;
     before(async () => {
-        dd = await getDD(path.join(__dirname, '../samples/br.ejs'), {  });
+        dd = await getDD(path.join(__dirname, '../samples/br.pdfml'), {  });
     });
 
     it('Expect Document-Definition to be generated without error', () => {
@@ -75,7 +98,7 @@ describe('Genereate PDF with ejs file', () => {
     
     it('Generated properly', async () => {
         let pdfDoc = await render({
-            path: path.join(__dirname, '../samples/simple.ejs'),
+            path: path.join(__dirname, '../samples/simple.pdfml'),
             data: { text: 'TEXT' }
         });
 
