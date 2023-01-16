@@ -42,6 +42,10 @@ npm i pdfml --save
 ## Usage
 ```js
 const pdfml = require('pdfml');
+pdfml.render({
+  path : PATH_TO_FILE_NAME
+  data : RENDER_DATA
+})
 ```
 
 ### EJS file
@@ -82,8 +86,9 @@ router.get('/pdf', async (res, res, next) => {
       data : {} ,// data for context in your ejs file,
       fonts : {} //if you want to supply fonts
     });
+    //set the content type to pdf
     res.setHeader("Content-type", "application/pdf");
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    //set the attachment header 
     res.attachment("PDF_FILE.pdf");
     res.send(doc);
 
