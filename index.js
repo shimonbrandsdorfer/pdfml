@@ -3,7 +3,7 @@ const { parseString } = require("xml2js");
 const path = require("path");
 const _ = require("lodash");
 
-const ProcessDom = require("./helpers/dom");
+const ProcessDom = require("./lib/dom");
 const PdfPrinter = require("pdfmake");
 
 const fonts = {
@@ -108,7 +108,12 @@ async function render(options) {
     return generatePDF(docDefinition, { fonts: options.fonts });
 }
 
-
+/**
+ * 
+ * @param {Object} docDefinition 
+ * @param {Object} options 
+ * @returns Promise<Buffer>
+ */
 function generatePDF(docDefinition, options) {
     return new Promise((resolve, reject) => {
         const printer = new PdfPrinter({ ...fonts, ...options.fonts });
