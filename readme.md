@@ -19,7 +19,7 @@
 - [Usage](#usage)
   - [EJS file](#ejs-file)
   - [Convert to DocDefinition Object](#convert-to-docdefinition-object)
-  - [Get A Buffer]
+  - [Get A Buffer](#get-a-buffer)
   - [Serve with express.js](#serve-with-express.js)
 - [Elements](#elements)
   - [PDFML](#pdfml)
@@ -75,9 +75,14 @@ pdfml.render({
 ### Convert to DocDefinition Object
 ```js
 const pdfml = require('pdfml');
-pdfml.getDD(STRING_OR_PATH_TO_FILE, RENDER_DATA, OPTIONS);
+let dd = pdfml.getDD(STRING_OR_PATH_TO_FILE, RENDER_DATA, OPTIONS);
 ```
 
+### Get A Buffer
+```js
+const pdfml = require('pdfml');
+let buffer = await pdfml.generatePDF(docDefinition, OPTIONS);
+```
 
 ### Serve with express.js
 ```js
