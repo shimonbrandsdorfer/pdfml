@@ -119,7 +119,6 @@ PDFML is the root element for the PDF document, and there is where you define al
 
 
 Using the attributes of the ```<pdfml>``` element ([see example](#pdfml-attributes-example)) you can define document level settings, such as page size, orientation, margins, etc.
-```
 
 #### PDFML Attributes Example
 ```xml
