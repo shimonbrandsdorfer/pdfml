@@ -1,6 +1,6 @@
 {
   "name": "pdfml",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "A Markup Language for PDF files",
   "main": "index.js",
   "scripts": {
