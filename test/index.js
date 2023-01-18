@@ -104,4 +104,19 @@ describe('Genereate PDF with ejs file', () => {
 
         expect(pdfDoc).to.be.ok;
     })
-})
+});
+
+
+describe('Genereate PDF using include functions and templates', () => {
+
+    it('Generated properly', async () => {
+        let pdfDoc = await render({
+            path: path.join(__dirname, '../samples/main.pdfml'),
+            data: { text: 'TEXT' }
+        });
+
+        expect(pdfDoc).to.be.ok;
+    });
+});
+
+

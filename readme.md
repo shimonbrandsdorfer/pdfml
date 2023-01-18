@@ -21,6 +21,7 @@
   - [Convert to DocDefinition Object](#convert-to-docdefinition-object)
   - [Get A Buffer](#get-a-buffer)
   - [Serve with express.js](#serve-with-express.js)
+  - [Use Templates](#use-templates)
 - [Elements](#elements)
   - [PDFML](#pdfml)
   - [TEXT](#TEXT)
@@ -109,7 +110,24 @@ router.get('/pdf', async (res, res, next) => {
   }
 })
 ```
+### Use Templates
+Synce this is powered by ejs, you can use the include function and setup multiple templates.
+This is very useful when you have generic parts of your document that you want to reuse.
 
+Consider the following file structure:
+
+- templates/
+    - header.pdfml
+    - footer.pdfml
+- main.pdfml
+
+
+You can then use the include function to include the header and footer in your main file:
+```xml
+<%- include('./templates/header.pdfml') %>
+<text>Main Content</text>
+<%- include('./templates/footer.pdfml') %>
+```
 
 ## Elements
 

@@ -1,0 +1,3 @@
+<%- include('./templates/header.pdfml') %>
+<text>Main Content</text>
+<%- include('./templates/footer.pdfml') %>
