@@ -29,6 +29,8 @@
   - [columns](#columns)
   - [Table](#table)
   - [Br](#br)
+  - [Image](#image)
+  - [hr](#hr)
 - [Features](#features)
   - [Conditional Elements](#conditional-elements)
 - [Fonts](#Fonts)
@@ -199,6 +201,16 @@ For tables use the the following elements (body, row, cell):
 Just to break a line
 ```xml
 <br/>
+```
+
+## Image
+```xml
+<image src="<%= image_data %>" width="100" height="100"/>
+```
+
+## hr
+```xml
+<hr/>
 ```
 
 ## Features
