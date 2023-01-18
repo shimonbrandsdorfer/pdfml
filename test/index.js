@@ -43,7 +43,7 @@ describe('Render "pdfml-attrs.pdfml" from xml to Document-Definition', () => {
         expect(dd.pageOrientation).to.equal('landscape');
     });
 
-    it('The page margins is = "[ 25, 140, 24, 30 ]"', () => {
+    it('The page margins is = "25 140 24 30"', () => {
         expect(dd.pageMargins).to.deep.equal([ 25, 140, 24, 30 ]);
     });
 });

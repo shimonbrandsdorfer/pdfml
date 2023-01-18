@@ -56,7 +56,7 @@ pdfml.render({
 ### EJS file
  Create an ejs file, for example:
  ```
- <pdfml page-margins="[ 25, 140, 24, 30 ]" page-size="LETTER">
+ <pdfml page-margins="25 140 24 30" page-size="LETTER">
 
     <head>
         <styles>
@@ -143,7 +143,7 @@ Using the attributes of the ```<pdfml>``` element ([see example](#pdfml-attribut
 
 #### PDFML Attributes Example
 ```xml
-<pdfml page-size="LETTER" page-orientation="landscape" page-margins="[ 25, 140, 24, 30 ]">
+<pdfml page-size="LETTER" page-orientation="landscape" page-margins="25 140 24 30">
 </pdfml>
 ```
 
@@ -181,7 +181,7 @@ A ```div``` will keep the inner elements together, the inner elemets will be dip
 For tables use the the following elements (body, row, cell):
 
 ```xml
-<table header-rows="1" widths="[95,95,95,95,95,95,95]" heights="[12,50,50,50,50,50,50]" dont-break-rows="true">
+<table header-rows="1" widths="95 95 95 95 95 95 95 " heights="12 50 50 50 50 50 50" dont-break-rows="true">
     <tbody>
         <% rows.forEach((row, rIdx) => { %>          
           <tr>

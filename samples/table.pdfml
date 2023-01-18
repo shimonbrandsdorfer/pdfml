@@ -1,4 +1,4 @@
-<pdfml page-margins="[ 25, 140, 24, 30 ]">
+<pdfml page-margins="25 140 24 30">
 
     <head>
         <styles>
@@ -13,7 +13,7 @@
     </head>
 
     <body>
-        <table header-rows="1" widths="[95,95,95,95,95,95,95]" heights="[12,50,50,50,50,50,50]" dont-break-rows="true">
+        <table header-rows="1" widths="95 95 95 95 95 95 95" heights="12 50 50 50 50 50 50" dont-break-rows="true">
             <tbody>        
                   <tr>
                         <td fill-color="#e5e5e5">

@@ -6,7 +6,7 @@
             <hdStyle font-size="14" color="red"></hdStyle>
             <hpStyle font-size="14" color="red"></hpStyle>
         </styles>
-        <values page-size="LETTER" page-margins="[ 25, 140, 24, 30 ]" page-orientatin="landscape"></values>
+        <values page-size="LETTER" page-margins="25 140 24 30" page-orientatin="landscape"></values>
         <header>Header</header>
         <footer>
         </footer>

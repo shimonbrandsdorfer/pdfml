@@ -1,4 +1,4 @@
-<pdfml page-margins="[ 25, 140, 24, 30 ]" page-size="LETTER" page-orientation="landscape">
+<pdfml page-margins="25 140 24 30" page-size="LETTER" page-orientation="landscape">
 
     <head>
         <styles>
