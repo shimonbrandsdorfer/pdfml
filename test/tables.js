@@ -29,7 +29,7 @@ describe('Detect mismatch of columns # and fill in empty cells for the missing',
             <table>
                 <tbody>
                     <tr>
-                        <td>A</td>
+                        <td><p>A</p></td>
                         <td>B</td>
                     </tr>
                     <tr>
@@ -67,6 +67,10 @@ describe('Detect mismatch of columns # and fill in empty cells for the missing',
 
     it('Expect second row to have 2 columns', () => {
         expect(dd.content[0].table.body[1].length).to.equal(2);
+    });
+
+    it('Expect first cell of first row to be {text: "A"}', () => {
+        expect(dd.content[0].table.body[0][0]).to.deep.equal({text: "A"});
     });
 
     it('Expect first cell of second row to be "C"', () => {
