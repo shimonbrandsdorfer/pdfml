@@ -89,26 +89,23 @@ let buffer = await pdfml.generatePDF(docDefinition, OPTIONS);
 const pdfml = require('pdfml');
 
 ///in your express router
-router.get('/pdf', async (res, res, next) => {
-
-  try{
-    
+app.get("/:filename", async (req, res, next) => {
+  try {
     //you can query some data here
     let doc = await pdfml.render({
-      path : '', //path to your ejs file
-      data : {} ,// data for context in your ejs file,
-      fonts : {} //if you want to supply fonts
+      path: Path.join(__dirname, req.params.filename), //path to your ejs file
+      data: {}, // data for context in your ejs file,
+      fonts: {}, //if you want to supply fonts
     });
     //set the content type to pdf
     res.setHeader("Content-type", "application/pdf");
-    //set the attachment header 
-    res.attachment("PDF_FILE.pdf");
+    //set the attachment header
+    res.attachment("PDF_FILE.pdf"); // remove this if you want to open the pdf in the browser
     res.send(doc);
-
   } catch (err) {
-     next(err);
+    next(err);
   }
-})
+});
 ```
 ### Use Templates
 Synce this is powered by ejs, you can use the include function and setup multiple templates.
