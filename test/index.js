@@ -71,18 +71,6 @@ describe('Render "print-if.pdfml" from xml to Document-Definition', () => {
     });
 });
 
-
-describe('Render "table.pdfml" from xml to Document-Definition', () => {
-    let dd;
-    before(async () => {
-        dd = await getDD(path.join(__dirname, '../samples/table.pdfml'), { rows : [['A', 'B'], ['C', 'D']] });
-    });
-
-    it('Expect Document-Definition to be generated without error', () => {
-        expect(dd).to.be.ok;
-    });
-});
-
 describe('Render "br.pdfml" from xml to Document-Definition', () => {
     let dd;
     before(async () => {

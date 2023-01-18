@@ -180,6 +180,10 @@ A ```div``` will keep the inner elements together, the inner elemets will be dip
 
 For tables use the the following elements (body, row, cell):
 
+Note: The table will be rendered in a single page, if you want to break the table in multiple pages use the ```dont-break-rows="true"``` attribute.
+
+Note: PDFML is resilent to a mismatched number of columns in each row, it will fill the missing columns with empty cells.
+
 ```xml
 <table header-rows="1" widths="95 95 95 95 95 95 95 " heights="12 50 50 50 50 50 50" dont-break-rows="true">
     <tbody>
