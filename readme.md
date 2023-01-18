@@ -184,13 +184,13 @@ For tables use the the following elements (body, row, cell):
 <table header-rows="1" widths="[95,95,95,95,95,95,95]" heights="[12,50,50,50,50,50,50]" dont-break-rows="true">
     <tbody>
         <% rows.forEach((row, rIdx) => { %>          
-          <row>
+          <tr>
             <% row.forEach((clm, cIdx) => { %>
-                <cell fill-color="<%= rIdx ? '' : '#e5e5e5' %>">
+                <td fill-color="<%= rIdx ? '' : '#e5e5e5' %>">
                     <text font-size="8" bold="true"> <%= clm %> </text>
-                </cell> 
+                </td> 
             <% }) %>
-        </row>
+        </tr>
       <%  }) %>
   </tbody>
 </table>
