@@ -1,12 +1,12 @@
 <%- include('./templates/header.pdfml') %>
 <body>
     <div>
-        <text>This is one block of text</text>
-        <text>This is another block of text</text>
+        <p>This is one block of text</p>
+        <p>This is another block of text</p>
     </div>
-    <span>
-        <text>This is one block of text</text>
-        <text>This is another block of text</text>
-    </span>
+    <columns>
+        <p>This is one block of text</p>
+        <p>This is another block of text</p>
+    </columns>
 </body>
 <%- include('./templates/footer.pdfml') %>

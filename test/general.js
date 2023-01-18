@@ -35,3 +35,20 @@ describe('Support self closing tags', () => {
         expect(_DD.content[0].text).to.equal('\n');
     });
 });
+
+it('Empty columns should work', () => {
+    const example = `<pdfml><body><columns></columns></body></pdfml>`;
+    let _DD;
+    before(async () => {
+        _DD = await getDD(example, {});
+    }); 
+
+    it(`allow "${example}" to work`, () => {
+        expect(_DD).to.be.ok;
+    });
+    
+
+    it('Generates an ampty array', () => {
+        expect(_DD.content[0].columns).to.deep.equal([]);
+    });
+});

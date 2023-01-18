@@ -24,9 +24,9 @@
   - [Use Templates](#use-templates)
 - [Elements](#elements)
   - [PDFML](#pdfml)
-  - [text](#TEXT)
+  - [p](#p)
   - [div](#div)
-  - [span](#span)
+  - [columns](#columns)
   - [Table](#table)
   - [Br](#br)
 - [Features](#features)
@@ -146,32 +146,33 @@ Using the attributes of the ```<pdfml>``` element ([see example](#pdfml-attribut
 ```
 
 
-### text
+### p
+(or text)
+A ```p``` element is for displaying a paragraph of text.
 
 ```xml
-<text>This is plain text</text>
+<p>This is plain text</p>
 ```
 
 ### div
-(also known as stack)
-A div will keep the inner elements together, the inner elemets will be diplayed in block mode.
+(also known as ```stack```)
+A ```div``` will keep the inner elements together, the inner elemets will be diplayed in block mode.
 
 ```xml
 <div>
-  <text>This is one block of text</text>
+    <text>This is one block of text</text>
     <text>This is another block of text</text>
 </div>
 ```
 
-### span
-(also known as columns)
-A div will keep the inner elements together, the inner elemets will be diplayed inline mode.
+### columns
+```columns``` will keep the inner elements together, the inner elemets will be diplayed inline mode.
 
 ```xml
-<div>
+<columns>
   <text>This is one block of text</text>
     <text>This is another block of text</text>
-</div>
+</columns>
 ```
 ### table
 
