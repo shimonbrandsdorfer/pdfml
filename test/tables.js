@@ -12,6 +12,14 @@ describe('Render "table.pdfml" from xml to Document-Definition', () => {
     it('Expect Document-Definition to be generated without error', () => {
         expect(dd).to.be.ok;
     });
+
+    it('Render file without error', async () => {
+        let pdfDoc = await render({
+            path : path.join(__dirname, '../samples/table.pdfml'),
+            data: {}
+        });
+        expect(pdfDoc).to.be.ok;
+    });
 });
 
 describe('Detect mismatch of columns # and fill in empty cells for the missing', () => {
