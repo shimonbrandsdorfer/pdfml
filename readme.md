@@ -209,7 +209,7 @@ Just to break a line
 
 ## Image
 ```xml
-<image src="<%= image_data %>" width="100" height="100"/>
+<img src="<%= image_data %>" width="100" height="100" fit="100 100"/>
 ```
 
 ## hr
