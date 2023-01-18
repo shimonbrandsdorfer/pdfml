@@ -1,7 +1,7 @@
 const ejs = require("ejs");
 const { parseString } = require("xml2js");
 const path = require("path");
-const _ = require("lodash");
+const { camelCase } = require("./lib/helpers");
 
 const ProcessDom = require("./lib/dom");
 const PdfPrinter = require("pdfmake");
@@ -56,8 +56,8 @@ async function getDD(textPath, data, options = { ejs: {} }) {
         childkey: "children",
         preserveChildrenOrder: true,
         explicitRoot: false,
-        attrNameProcessors: [_.camelCase],
-        tagNameProcessors: [_.camelCase]
+        attrNameProcessors: [camelCase],
+        tagNameProcessors: [camelCase]
     };
     let DOM = await parseXml(xml, OPTIONS);
     return ProcessDom(DOM);
