@@ -17,7 +17,7 @@ app.get("/:filename", async (req, res, next) => {
     //set the content type to pdf
     res.setHeader("Content-type", "application/pdf");
     //set the attachment header
-    res.attachment("PDF_FILE.pdf");
+    //res.attachment("PDF_FILE.pdf");
     res.send(doc);
   } catch (err) {
     next(err);

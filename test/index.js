@@ -109,13 +109,25 @@ describe('Genereate PDF with ejs file', () => {
 
 describe('Genereate PDF using include functions and templates', () => {
 
+    let dd;
+    before(async () => {
+        dd = await getDD(path.join(__dirname, '../samples/main.pdfml'), {});
+    });
+
     it('Generated properly', async () => {
         let pdfDoc = await render({
             path: path.join(__dirname, '../samples/main.pdfml'),
-            data: { text: 'TEXT' }
+            data: {  }
         });
-
         expect(pdfDoc).to.be.ok;
+    });
+
+    it('PDF Content exists', () => {
+        expect(dd.content).to.be.ok;
+    });
+
+    it('PDF Content at least one element', () => {
+        expect(dd.content.length).to.be.greaterThan(0);
     });
 });
 

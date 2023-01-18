@@ -122,7 +122,9 @@ Consider the following file structure:
 You can then use the include function to include the header and footer in your main file:
 ```xml
 <%- include('./templates/header.pdfml') %>
-<text>Main Content</text>
+<body>
+  <text>Main Content</text>
+</body>
 <%- include('./templates/footer.pdfml') %>
 ```
 
