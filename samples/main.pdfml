@@ -1,5 +1,12 @@
 <%- include('./templates/header.pdfml') %>
 <body>
-  <text>Main Content</text>
+    <div>
+        <text>This is one block of text</text>
+        <text>This is another block of text</text>
+    </div>
+    <span>
+        <text>This is one block of text</text>
+        <text>This is another block of text</text>
+    </span>
 </body>
 <%- include('./templates/footer.pdfml') %>
