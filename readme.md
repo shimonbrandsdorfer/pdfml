@@ -195,9 +195,9 @@ For tables use the the following elements (body, row, cell):
 
 
 ## Br
-Just to break a line (Note, you cannot use it as a self-closing tag)
+Just to break a line
 ```xml
-<br></br>
+<br/>
 ```
 
 ## Features

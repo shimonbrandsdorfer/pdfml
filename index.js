@@ -46,6 +46,7 @@ module.exports = {
  */
 async function getDD(textPath, data, options = { ejs: {} }) {
     let xml;
+    if(textPath.startsWith("<pdfml")) options.isText = true;
     if (!options.isText) xml = await renderFile(textPath, data, options.ejs);
     else xml = await renderString(textPath, data, options.ejs);
     const OPTIONS = {
@@ -85,11 +86,11 @@ function renderFile(filePath, data, options) {
 
 function renderString(text, data, options) {
     return new Promise((resolve, reject) => {
-
-        ejs.render(text, data, options, (err, str) => {
-            if (err) reject(err);
-            else resolve(str);
-        });
+        try{
+            resolve(ejs.render(text, data, options));
+        } catch (err) {
+            reject(err);
+        }
     });
 }
 
