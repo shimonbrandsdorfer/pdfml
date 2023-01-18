@@ -1,0 +1,13 @@
+<pdfml>
+    <body>
+        <table style="tableExample">
+            <tbody>     
+                <row>
+                    <cell>Column 1</cell>
+                    <cell>Column 2</cell> 
+                    <cell>Column 3</cell> 
+                </row>
+            </tbody>
+        </table>
+    </body>
+</pdfml>

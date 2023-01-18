@@ -28,3 +28,33 @@ describe('basics example', () => {
     });
 
 });
+
+
+describe('Simple Tables example', () => {
+    const DD = {
+        content : [
+            {
+                style: 'tableExample',
+                table: {
+                    body: [
+                        ['Column 1', 'Column 2', 'Column 3']
+                    ]
+                }
+            }
+        ]
+    };
+
+
+    it('Generated properly', async () => {
+        let pdfDoc = await render({
+            path: path.join(__dirname, '../samples/pdfmake-samples/tables.pdfml'),
+            data: {  }
+        });
+        expect(pdfDoc).to.be.ok;
+    });
+
+    it('PDF Content matches', async () => {
+        let _DD = await getDD(path.join(__dirname, '../samples/pdfmake-samples/tables.pdfml'), {});
+        expect(_DD.content).to.deep.equal(DD.content);
+    });
+});

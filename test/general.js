@@ -36,12 +36,19 @@ describe('Support self closing tags', () => {
     });
 });
 
-it('Empty columns should work', () => {
+describe('Empty columns should work', () => {
     const example = `<pdfml><body><columns></columns></body></pdfml>`;
     let _DD;
     before(async () => {
         _DD = await getDD(example, {});
     }); 
+
+    it('Renderes properly', async () => {
+        let pdfDoc = await render({
+            str : example,
+        });
+        expect(pdfDoc).to.be.ok;
+    });
 
     it(`allow "${example}" to work`, () => {
         expect(_DD).to.be.ok;

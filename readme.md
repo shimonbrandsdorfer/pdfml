@@ -182,7 +182,7 @@ For tables use the the following elements (body, row, cell):
 
 ```xml
 <table header-rows="1" widths="[95,95,95,95,95,95,95]" heights="[12,50,50,50,50,50,50]" dont-break-rows="true">
-    <body>
+    <tbody>
         <% rows.forEach((row, rIdx) => { %>          
           <row>
             <% row.forEach((clm, cIdx) => { %>
@@ -192,7 +192,7 @@ For tables use the the following elements (body, row, cell):
             <% }) %>
         </row>
       <%  }) %>
-  </body>
+  </tbody>
 </table>
 ```
 

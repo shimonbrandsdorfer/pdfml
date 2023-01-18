@@ -1,7 +1,7 @@
 const ejs = require("ejs");
 const { parseString } = require("xml2js");
 const path = require("path");
-const { camelCase } = require("./lib/helpers");
+const { camelCase } = require("./lib/helpers/general");
 
 const ProcessDom = require("./lib/dom");
 const PdfPrinter = require("pdfmake");
