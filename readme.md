@@ -1,9 +1,9 @@
 <h1 align="center">
-  <a href='https://github.com/nutrition-power/pdfml'>PDFML</a> - <em>PDF</em>  Markdown Language
+  <a href='https://github.com/nutrition-power/pdfml'>PDFML</a> - <em>PDF</em>  Markup Language
 </h1>
 
 <p align="center">
-  Write dynamic PDF files using a markdown language similar to HTML, Using the EJS rendering engine.
+  Write dynamic PDF files using a markup language similar to HTML, Using the EJS rendering engine.
 <p>
 
 <p align="center">
