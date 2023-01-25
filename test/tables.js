@@ -26,7 +26,7 @@ describe('Detect mismatch of columns # and fill in empty cells for the missing',
     let dd;
     const example = `<pdfml>
         <body>
-            <table>
+            <table widths="14" heights="14">
                 <tbody>
                     <tr>
                         <td><p>A</p></td>
@@ -79,6 +79,14 @@ describe('Detect mismatch of columns # and fill in empty cells for the missing',
 
     it('Expect second cell of second row to be empty', () => {
         expect(dd.content[0].table.body[1][1]).to.equal('');
+    });
+
+    it('Expect table widths to be [14, auto]', () => {
+        expect(dd.content[0].table.widths).to.deep.equal([14, 'auto']);
+    });
+
+    it('Expect table heights to be [14, auto]', () => {
+        expect(dd.content[0].table.heights).to.deep.equal([14, 'auto']);
     });
 
 

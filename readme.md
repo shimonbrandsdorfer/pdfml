@@ -4,11 +4,15 @@
 
 <p align="center">
   Write dynamic PDF files using a markdown language similar to HTML, Using the EJS rendering engine.
-<p>
+</p>
 
 <p align="center">
   This project is built using <a href='http://pdfmake.org/#/'>pdfmake</a> and <a href='https://ejs.co/'>ejs</a>
-<p>
+</p>
+
+<p align="center">
+  Additionally, this will improve and auto fix your document defintion, so you don't have to worry about the PDF file being broken.
+</p>
 
 
 ## Table of Contents
@@ -182,7 +186,9 @@ For tables use the the following elements (body, row, cell):
 
 Note: The table will be rendered in a single page, if you want to break the table in multiple pages use the ```dont-break-rows="true"``` attribute.
 
-Note: PDFML is resilent to a mismatched number of columns in each row, it will fill the missing columns with empty cells.
+Note: PDFML is resilent to a mismatched number of columns in each row, it will fill the missing columns with empty cells. It will also fill in the widths and/or the heights attribute with the default width (auto) for each missing column.
+
+```xml
 
 ```xml
 <table header-rows="1" widths="95 95 95 95 95 95 95 " heights="12 50 50 50 50 50 50" dont-break-rows="true">
