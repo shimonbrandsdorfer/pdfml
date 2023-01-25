@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href='https://github.com/nutrition-power/pdfml'>PDFML</a> - <em>PDF</em>  Markdown Language
+  <a href='https://github.com/nutrition-power/pdfml'>PDFML</a> - <em>PDF</em>  Markup Language
 </h1>
 
 <p align="center">
