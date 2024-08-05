@@ -95,3 +95,77 @@ describe('Detect mismatch of columns # and fill in empty cells for the missing',
 
 
 });
+
+describe('Widths in array', () => {
+    let dd;
+    const example = `<pdfml>
+        <body>
+            <table widths="95 95 95 95 95 95 95" heights="12 50 50 50 50 50 50" layout="noBorders">
+                <tbody>
+                    <tr>
+                        <td><p>A</p></td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            C
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </body>
+    </pdfml>`;
+    before(async () => {
+        dd = await getDD(example, {});
+    });
+
+    it('Generate Document-Definition without error', () => {
+        expect(dd).to.be.ok;
+    });
+
+    it('Render table without error', async () => {
+        let pdfDoc = await render({
+            str : example,
+            data: {}
+        });
+        expect(pdfDoc).to.be.ok;
+    });
+
+    it('Expect the table to have 2 rows', () => {
+        expect(dd.content[0].table.body.length).to.equal(2);
+    });
+
+    it('Expect first row to have 2 columns', () => {
+        expect(dd.content[0].table.body[0].length).to.equal(2);
+    });
+
+    it('Expect second row to have 2 columns', () => {
+        expect(dd.content[0].table.body[1].length).to.equal(2);
+    });
+
+    it('Expect first cell of first row to be {text: "A"}', () => {
+        expect(dd.content[0].table.body[0][0]).to.deep.equal({text: "A"});
+    });
+
+    it('Expect first cell of second row to be "C"', () => {
+        expect(dd.content[0].table.body[1][0]).to.equal('C');
+    });
+
+    it('Expect second cell of second row to be empty', () => {
+        expect(dd.content[0].table.body[1][1]).to.equal('');
+    });
+
+    it('Expect table widths to be [95,95,95,95,95,95,95]', () => {
+        expect(dd.content[0].table.widths).to.deep.equal([95,95,95,95,95,95,95]);
+    });
+
+    it('Expect table heights to be [12,50,50,50,50,50,50]', () => {
+        expect(dd.content[0].table.heights).to.deep.equal([12,50,50,50,50,50,50]);
+    });
+
+    it('Expect table layout to be "noBorders"', () => {
+        expect(dd.content[0].layout).to.equal('noBorders');
+    });
+
+
+});
